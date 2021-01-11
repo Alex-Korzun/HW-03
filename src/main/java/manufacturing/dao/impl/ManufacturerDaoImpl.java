@@ -16,7 +16,7 @@ public class ManufacturerDaoImpl implements ManufacturerDao {
     }
 
     @Override
-    public Optional<Manufacturer> getByTd(Long manufacturerId) {
+    public Optional<Manufacturer> getById(Long manufacturerId) {
         return Optional.ofNullable(Storage.manufacturers.get(Math.toIntExact(manufacturerId)));
     }
 

@@ -7,7 +7,7 @@ import java.util.Optional;
 public interface ManufacturerDao {
     Manufacturer create(Manufacturer manufacturer);
 
-    Optional<Manufacturer> getByTd(Long manufacturerId);
+    Optional<Manufacturer> getById(Long manufacturerId);
 
     Manufacturer update(Manufacturer manufacturer);
 
