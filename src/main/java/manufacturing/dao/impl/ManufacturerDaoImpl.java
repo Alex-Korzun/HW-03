@@ -2,13 +2,14 @@ package manufacturing.dao.impl;
 
 import manufacturing.dao.ManufacturerDao;
 import manufacturing.db.Storage;
+import manufacturing.lib.Dao;
 import manufacturing.model.Manufacturer;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+@Dao
 public class ManufacturerDaoImpl implements ManufacturerDao {
-
     @Override
     public Manufacturer create(Manufacturer manufacturer) {
         Storage.addManufacturer(manufacturer);
@@ -17,7 +18,7 @@ public class ManufacturerDaoImpl implements ManufacturerDao {
 
     @Override
     public Optional<Manufacturer> getById(Long manufacturerId) {
-        return Optional.ofNullable(Storage.manufacturers.get(Math.toIntExact(manufacturerId)));
+        return Optional.ofNullable(Storage.manufacturers.get(manufacturerId.intValue()));
     }
 
     @Override
