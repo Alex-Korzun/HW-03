@@ -1,12 +1,12 @@
 package manufacturing.dao.impl;
 
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 import manufacturing.dao.ManufacturerDao;
 import manufacturing.db.Storage;
 import manufacturing.lib.Dao;
 import manufacturing.model.Manufacturer;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 
 @Dao
 public class ManufacturerDaoImpl implements ManufacturerDao {

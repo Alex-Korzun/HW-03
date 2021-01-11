@@ -1,8 +1,8 @@
 package manufacturing.dao;
 
-import manufacturing.model.Manufacturer;
 import java.util.List;
 import java.util.Optional;
+import manufacturing.model.Manufacturer;
 
 public interface ManufacturerDao {
     Manufacturer create(Manufacturer manufacturer);

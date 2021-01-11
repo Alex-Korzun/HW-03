@@ -1,9 +1,8 @@
 package manufacturing.db;
 
-import manufacturing.model.Manufacturer;
-
 import java.util.ArrayList;
 import java.util.List;
+import manufacturing.model.Manufacturer;
 
 public class Storage {
     public static final List<Manufacturer> manufacturers = new ArrayList<>();
