@@ -26,7 +26,7 @@ public class Storage {
     }
 
     public static void addDriver(Driver driver) {
-        driver.setId(++carId);
+        driver.setId(++driverId);
         drivers.add(driver);
     }
 }
