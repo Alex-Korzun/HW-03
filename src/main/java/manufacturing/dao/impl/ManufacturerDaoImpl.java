@@ -1,8 +1,8 @@
 package manufacturing.dao.impl;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.IntStream;
 import manufacturing.dao.ManufacturerDao;
 import manufacturing.db.Storage;
 import manufacturing.lib.Dao;
@@ -23,24 +23,15 @@ public class ManufacturerDaoImpl implements ManufacturerDao {
 
     @Override
     public Manufacturer update(Manufacturer manufacturer) {
-        Manufacturer manufacturerForUpdate = Storage.manufacturers
-                .stream()
-                .filter(m -> Objects.equals(m.getId(), manufacturer.getId()))
-                .findFirst()
-                .get();
-        manufacturerForUpdate.setName(manufacturer.getName());
-        manufacturerForUpdate.setCountry(manufacturer.getCountry());
-        return manufacturerForUpdate;
+        IntStream.range(0, Storage.manufacturers.size())
+                .filter(i -> Storage.manufacturers.get(i).getId().equals(manufacturer.getId()))
+                .forEach(i -> Storage.manufacturers.set(i, manufacturer));
+        return manufacturer;
     }
 
     @Override
     public boolean deleteById(Long manufacturerId) {
-        for (Manufacturer manufacturerForDeletion : getAllManufacturers()) {
-            if (Objects.equals(manufacturerForDeletion.getId(), manufacturerId)) {
-                return Storage.manufacturers.remove(manufacturerForDeletion);
-            }
-        }
-        return false;
+        return Storage.manufacturers.removeIf(m -> m.getId().equals(manufacturerId));
     }
 
     @Override
