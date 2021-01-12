@@ -1,5 +1,7 @@
 package manufacturing.service.impl;
 
+import java.util.List;
+import java.util.stream.Collectors;
 import manufacturing.dao.CarDao;
 import manufacturing.dao.DriverDao;
 import manufacturing.lib.Inject;
@@ -7,8 +9,6 @@ import manufacturing.lib.Service;
 import manufacturing.model.Car;
 import manufacturing.model.Driver;
 import manufacturing.service.CarService;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class CarServiceImpl implements CarService {

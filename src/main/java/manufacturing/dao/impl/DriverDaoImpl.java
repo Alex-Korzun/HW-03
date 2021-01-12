@@ -1,13 +1,12 @@
 package manufacturing.dao.impl;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.IntStream;
 import manufacturing.dao.DriverDao;
 import manufacturing.db.Storage;
 import manufacturing.lib.Dao;
 import manufacturing.model.Driver;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.IntStream;
 
 @Dao
 public class DriverDaoImpl implements DriverDao {
