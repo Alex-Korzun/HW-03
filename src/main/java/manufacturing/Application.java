@@ -36,7 +36,6 @@ public class Application {
         manufacturerService.delete(secondManufacturer);
         System.out.println(manufacturerService.getAllManufacturers().toString());
 
-
         DriverService driverService = (DriverService) injector
                 .getInstance(DriverService.class);
         Driver firstDriver = new Driver("Bob", "AB123CD");
@@ -59,7 +58,6 @@ public class Application {
         driverService.delete(1L);
         System.out.println(driverService.getAll().toString());
 
-
         CarService carService = (CarService) injector.getInstance(CarService.class);
         Car firstCar = new Car("RS 6", firstManufacturer);
         Car secondCar = new Car("LaFerrari", secondManufacturer);
@@ -79,10 +77,10 @@ public class Application {
         carService.addDriverToCar(fourthDriver, secondCar);
         System.out.println(carService.getAll().toString());
 
-        Car updatedCar = carService.get(0L);
+        Car updatedCar = carService.get(1L);
         updatedCar.setModel("Q8");
         carService.update(updatedCar);
-        System.out.println(carService.get(0L).toString());
+        System.out.println(carService.get(1L).toString());
 
         carService.removeDriverFromCar(firstDriver, firstCar);
         System.out.println(carService.getAll().toString());

@@ -18,7 +18,10 @@ public class DriverDaoImpl implements DriverDao {
 
     @Override
     public Optional<Driver> getById(Long driverId) {
-        return Optional.ofNullable(Storage.drivers.get(driverId.intValue()));
+        return Storage.drivers
+                .stream()
+                .filter(d -> d.getId().equals(driverId))
+                .findFirst();
     }
 
     @Override
@@ -40,7 +43,7 @@ public class DriverDaoImpl implements DriverDao {
     }
 
     @Override
-    public List<Driver> getAllDrivers() {
+    public List<Driver> getAll() {
         return Storage.drivers;
     }
 }

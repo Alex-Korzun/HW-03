@@ -15,5 +15,5 @@ public interface DriverDao {
 
     boolean delete(Driver driver);
 
-    List<Driver> getAllDrivers();
+    List<Driver> getAll();
 }

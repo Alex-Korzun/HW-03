@@ -3,7 +3,6 @@ package manufacturing.service.impl;
 import java.util.List;
 import java.util.stream.Collectors;
 import manufacturing.dao.CarDao;
-import manufacturing.dao.DriverDao;
 import manufacturing.lib.Inject;
 import manufacturing.lib.Service;
 import manufacturing.model.Car;
@@ -14,8 +13,6 @@ import manufacturing.service.CarService;
 public class CarServiceImpl implements CarService {
     @Inject
     private CarDao carDao;
-    @Inject
-    private DriverDao driverDao;
 
     @Override
     public Car create(Car car) {
@@ -24,12 +21,12 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public Car get(Long id) {
-        return carDao.getById(id).orElseThrow();
+        return carDao.getById(id).get();
     }
 
     @Override
     public List<Car> getAll() {
-        return carDao.getAllCars();
+        return carDao.getAll();
     }
 
     @Override
@@ -44,7 +41,6 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public void addDriverToCar(Driver driver, Car car) {
-        driverDao.create(driver);
         car.getDrivers().add(driver);
         carDao.update(car);
     }
@@ -57,12 +53,6 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public List<Car> getAllByDriver(Long driverId) {
-        return carDao.getAllCars().stream()
-                .filter(c -> c.getDrivers()
-                        .stream()
-                        .map(Driver::getId)
-                        .collect(Collectors.toList())
-                        .contains(driverId))
-                .collect(Collectors.toList());
+        return carDao.getAllByDriver(driverId);
     }
 }

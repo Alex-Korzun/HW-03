@@ -1,8 +1,7 @@
 package manufacturing.service;
 
-import manufacturing.model.Driver;
-
 import java.util.List;
+import manufacturing.model.Driver;
 
 public interface DriverService {
     Driver create(Driver driver);

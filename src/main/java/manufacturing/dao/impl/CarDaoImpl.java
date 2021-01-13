@@ -2,6 +2,7 @@ package manufacturing.dao.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import manufacturing.dao.CarDao;
 import manufacturing.db.Storage;
@@ -18,7 +19,10 @@ public class CarDaoImpl implements CarDao {
 
     @Override
     public Optional<Car> getById(Long carId) {
-        return Optional.ofNullable(Storage.cars.get(carId.intValue()));
+        return Storage.cars
+                .stream()
+                .filter(c -> c.getId().equals(carId))
+                .findFirst();
     }
 
     @Override
@@ -40,7 +44,16 @@ public class CarDaoImpl implements CarDao {
     }
 
     @Override
-    public List<Car> getAllCars() {
+    public List<Car> getAll() {
         return Storage.cars;
+    }
+
+    @Override
+    public List<Car> getAllByDriver(Long driverId) {
+        return Storage.cars.stream()
+                .filter(c -> c.getDrivers()
+                        .stream()
+                        .anyMatch(d -> d.getId().equals(driverId)))
+                .collect(Collectors.toList());
     }
 }

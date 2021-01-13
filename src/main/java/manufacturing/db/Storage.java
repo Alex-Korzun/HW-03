@@ -2,7 +2,6 @@ package manufacturing.db;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import manufacturing.model.Car;
 import manufacturing.model.Driver;
 import manufacturing.model.Manufacturer;
