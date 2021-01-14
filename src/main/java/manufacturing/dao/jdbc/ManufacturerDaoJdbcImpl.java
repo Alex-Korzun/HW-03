@@ -1,10 +1,5 @@
 package manufacturing.dao.jdbc;
 
-import manufacturing.lib.Dao;
-import manufacturing.exception.DataProcessingException;
-import manufacturing.model.Manufacturer;
-import manufacturing.util.ConnectionUtil;
-import manufacturing.dao.ManufacturerDao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,6 +8,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import manufacturing.dao.ManufacturerDao;
+import manufacturing.exception.DataProcessingException;
+import manufacturing.lib.Dao;
+import manufacturing.model.Manufacturer;
+import manufacturing.util.ConnectionUtil;
 
 @Dao
 public class ManufacturerDaoJdbcImpl implements ManufacturerDao {
@@ -41,8 +41,8 @@ public class ManufacturerDaoJdbcImpl implements ManufacturerDao {
 
     @Override
     public Optional<Manufacturer> getById(Long manufacturerId) {
-        String query = "SELECT * FROM manufacturers " +
-                "WHERE manufacturer_id = ? AND `delete` = FALSE";
+        String query = "SELECT * FROM manufacturers "
+                + "WHERE manufacturer_id = ? AND `delete` = FALSE";
         Manufacturer manufacturer = null;
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -79,9 +79,9 @@ public class ManufacturerDaoJdbcImpl implements ManufacturerDao {
 
     @Override
     public boolean delete(Long manufacturerId) {
-        String query = "UPDATE manufacturers " +
-                "SET `delete` = TRUE " +
-                "WHERE manufacturer_id = ?";
+        String query = "UPDATE manufacturers "
+                + "SET `delete` = TRUE "
+                + "WHERE manufacturer_id = ?";
         int deletedId;
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(query);

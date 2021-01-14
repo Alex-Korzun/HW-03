@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class ConnectionUtil {
-    public static Connection getConnection(){
+    public static Connection getConnection() {
         Properties dbProps = new Properties();
         dbProps.put("user", "root");
         dbProps.put("password", "1234");
