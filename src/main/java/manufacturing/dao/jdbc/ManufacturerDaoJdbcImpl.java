@@ -1,16 +1,18 @@
 package manufacturing.dao.jdbc;
 
-import manufacturing.dao.ManufacturerDao;
-import manufacturing.exception.DataProcessingException;
 import manufacturing.lib.Dao;
+import manufacturing.exception.DataProcessingException;
 import manufacturing.model.Manufacturer;
 import manufacturing.util.ConnectionUtil;
-
-import java.sql.*;
+import manufacturing.dao.ManufacturerDao;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 
 @Dao
 public class ManufacturerDaoJdbcImpl implements ManufacturerDao {
@@ -31,7 +33,8 @@ public class ManufacturerDaoJdbcImpl implements ManufacturerDao {
             }
             preparedStatement.close();
         } catch (SQLException e) {
-            throw new DataProcessingException("Can't create manufacturer ", e);
+            throw new DataProcessingException("Can't create manufacturer "
+                    + manufacturer, e);
         }
         return manufacturer;
     }

@@ -5,7 +5,6 @@ import java.util.Optional;
 import java.util.stream.IntStream;
 import manufacturing.dao.ManufacturerDao;
 import manufacturing.db.Storage;
-import manufacturing.lib.Dao;
 import manufacturing.model.Manufacturer;
 
 public class ManufacturerDaoImpl implements ManufacturerDao {
