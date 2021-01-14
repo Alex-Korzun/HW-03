@@ -27,7 +27,7 @@ public class ManufacturerDaoJdbcImpl implements ManufacturerDao {
 
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
             if (resultSet.next()) {
-                manufacturer.setId(resultSet.getObject("manufacturer_id", Long.class));
+                manufacturer.setId(resultSet.getObject(1, Long.class));
             }
             preparedStatement.close();
         } catch (SQLException e) {
@@ -79,15 +79,17 @@ public class ManufacturerDaoJdbcImpl implements ManufacturerDao {
         String query = "UPDATE manufacturers " +
                 "SET `delete` = TRUE " +
                 "WHERE manufacturer_id = ?";
+        int deletedId;
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setLong(1, manufacturerId);
+            deletedId = preparedStatement.executeUpdate();
             preparedStatement.close();
-            return preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             throw new DataProcessingException("Can't delete manufacturer by following id "
                     + manufacturerId, e);
         }
+        return deletedId > 0;
     }
 
     @Override

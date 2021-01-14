@@ -8,7 +8,6 @@ import manufacturing.db.Storage;
 import manufacturing.lib.Dao;
 import manufacturing.model.Manufacturer;
 
-@Dao
 public class ManufacturerDaoImpl implements ManufacturerDao {
     @Override
     public Manufacturer create(Manufacturer manufacturer) {
