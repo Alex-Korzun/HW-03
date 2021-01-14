@@ -11,9 +11,7 @@ public interface ManufacturerDao {
 
     Manufacturer update(Manufacturer manufacturer);
 
-    boolean deleteById(Long manufacturerId);
-
-    boolean delete(Manufacturer manufacturer);
+    boolean delete(Long manufacturerId);
 
     List<Manufacturer> getAllManufacturers();
 }
