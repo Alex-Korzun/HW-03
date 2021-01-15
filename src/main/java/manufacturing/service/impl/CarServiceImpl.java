@@ -1,7 +1,6 @@
 package manufacturing.service.impl;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import manufacturing.dao.CarDao;
 import manufacturing.lib.Inject;
 import manufacturing.lib.Service;

@@ -30,10 +30,7 @@ public class Application {
         manufacturerService.update(updatedManufacturer);
         System.out.println(manufacturerService.getAllManufacturers().toString());
 
-        manufacturerService.deleteById(1L);
-        System.out.println(manufacturerService.getAllManufacturers().toString());
-
-        manufacturerService.delete(secondManufacturer);
+        manufacturerService.delete(secondManufacturer.getId());
         System.out.println(manufacturerService.getAllManufacturers().toString());
 
         DriverService driverService = (DriverService) injector
