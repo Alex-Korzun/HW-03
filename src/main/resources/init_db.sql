@@ -9,3 +9,6 @@ CREATE TABLE `taxi_service`.`manufacturers` (
 
 ALTER TABLE `taxi_service`.`manufacturers`
     CHANGE COLUMN `delete` `delete` TINYINT(1) NULL DEFAULT 0 ;
+
+ALTER TABLE `taxi_service`.`manufacturers`
+    RENAME COLUMN `delete` TO `deleted`;
