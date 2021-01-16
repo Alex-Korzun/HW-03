@@ -8,7 +8,6 @@ import manufacturing.db.Storage;
 import manufacturing.lib.Dao;
 import manufacturing.model.Driver;
 
-@Dao
 public class DriverDaoImpl implements DriverDao {
     @Override
     public Driver create(Driver driver) {
@@ -33,13 +32,8 @@ public class DriverDaoImpl implements DriverDao {
     }
 
     @Override
-    public boolean deleteById(Long driverId) {
-        return Storage.drivers.removeIf(m -> m.getId().equals(driverId));
-    }
-
-    @Override
-    public boolean delete(Driver driver) {
-        return Storage.drivers.remove(driver);
+    public boolean delete(Long driverId) {
+        return Storage.cars.removeIf(m -> m.getId().equals(driverId));
     }
 
     @Override

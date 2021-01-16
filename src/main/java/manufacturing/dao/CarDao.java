@@ -2,8 +2,11 @@ package manufacturing.dao;
 
 import java.util.List;
 import java.util.Optional;
+
+import manufacturing.lib.Dao;
 import manufacturing.model.Car;
 
+@Dao
 public interface CarDao {
     Car create(Car car);
 
@@ -11,9 +14,7 @@ public interface CarDao {
 
     Car update(Car car);
 
-    boolean deleteById(Long carId);
-
-    boolean delete(Car car);
+    boolean delete(Long carId);
 
     List<Car> getAll();
 
