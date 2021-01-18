@@ -6,7 +6,6 @@ import java.util.Optional;
 import manufacturing.lib.Dao;
 import manufacturing.model.Car;
 
-@Dao
 public interface CarDao {
     Car create(Car car);
 

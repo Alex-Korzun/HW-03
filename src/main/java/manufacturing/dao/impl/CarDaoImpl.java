@@ -9,7 +9,6 @@ import manufacturing.db.Storage;
 import manufacturing.lib.Dao;
 import manufacturing.model.Car;
 
-@Dao
 public class CarDaoImpl implements CarDao {
     @Override
     public Car create(Car car) {
