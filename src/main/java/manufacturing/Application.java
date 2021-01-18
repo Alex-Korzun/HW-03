@@ -81,5 +81,7 @@ public class Application {
 
         driverService.delete(1L);
         System.out.println(driverService.getAll().toString());
+
+        System.out.println(carService.getAllByDriver(4L));
     }
 }

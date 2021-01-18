@@ -30,7 +30,7 @@ public class CarDaoJdbcImpl implements CarDao {
             preparedStatement.executeUpdate();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
             if (resultSet.next()) {
-                car.setId(resultSet.getObject(1, Long.class));
+                car.setId(resultSet.getObject("GENERATED_KEY", Long.class));
             }
         } catch (SQLException e) {
             throw new DataProcessingException("Can't create car "
@@ -52,10 +52,9 @@ public class CarDaoJdbcImpl implements CarDao {
                 PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setLong(1, carId);
             ResultSet resultSet = preparedStatement.executeQuery();
-            List<Driver> drivers = createDrivers(carId, connection);
             while (resultSet.next()) {
                 car = createCar(resultSet, connection);
-                car.setDrivers(drivers);
+                car.setDrivers(getAllDriversByCarId(carId, connection));
             }
             return Optional.ofNullable(car);
         } catch (SQLException e) {
@@ -86,8 +85,7 @@ public class CarDaoJdbcImpl implements CarDao {
             preparedStatementForUpdating.setLong(3, car.getId());
             preparedStatementForUpdating.executeUpdate();
             preparedStatementForInserting.setLong(1, car.getId());
-            List<Driver> drivers = car.getDrivers();
-            for (Driver driver : drivers) {
+            for (Driver driver : car.getDrivers()) {
                 preparedStatementForInserting.setLong(2, driver.getId());
                 preparedStatementForInserting.executeUpdate();
             }
@@ -136,7 +134,7 @@ public class CarDaoJdbcImpl implements CarDao {
 
     @Override
     public List<Car> getAllByDriver(Long driverId) {
-        String query = "SELECT c.car_id "
+        String query = "SELECT c.car_id, cd.driver_id "
                 + "FROM cars c "
                 + "INNER JOIN cars_drivers cd "
                 + "ON c.car_id = cd.car_id "
@@ -155,7 +153,7 @@ public class CarDaoJdbcImpl implements CarDao {
         }
     }
 
-    private List<Driver> createDrivers(Long carId, Connection connection) {
+    private List<Driver> getAllDriversByCarId(Long carId, Connection connection) {
         String query = "SELECT cd.driver_id, d.driver_name, d.license_number "
                 + "FROM cars_drivers cd "
                 + "INNER JOIN drivers d "
@@ -208,7 +206,7 @@ public class CarDaoJdbcImpl implements CarDao {
             Manufacturer manufacturer = createManufacturer(resultSet);
             Car car = new Car(model, manufacturer);
             car.setId(carId);
-            car.setDrivers(createDrivers(carId, connection));
+            car.setDrivers(getAllDriversByCarId(carId, connection));
             return car;
         } catch (SQLException e) {
             throw new DataProcessingException("Can't parse car from result set ", e);
