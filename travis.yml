@@ -2,7 +2,7 @@ language: java
 jdk:
   - openjdk11
 script:
-  - mvn clean verify
+  - mvn clean install
 cache:
   directories:
     - $HOME/.m2
