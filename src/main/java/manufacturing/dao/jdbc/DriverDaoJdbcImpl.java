@@ -1,15 +1,18 @@
 package manufacturing.dao.jdbc;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import manufacturing.dao.DriverDao;
 import manufacturing.exception.DataProcessingException;
 import manufacturing.lib.Dao;
 import manufacturing.model.Driver;
 import manufacturing.util.ConnectionUtil;
-
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 @Dao
 public class DriverDaoJdbcImpl implements DriverDao {
@@ -72,9 +75,9 @@ public class DriverDaoJdbcImpl implements DriverDao {
 
     @Override
     public boolean delete(Long driverId) {
-        String query = "UPDATE drivers " +
-                "SET deleted = TRUE " +
-                "WHERE driver_id = ?";
+        String query = "UPDATE drivers "
+                + "SET deleted = TRUE "
+                + "WHERE driver_id = ?";
         int deletedId;
         try (Connection connection = ConnectionUtil.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -89,8 +92,8 @@ public class DriverDaoJdbcImpl implements DriverDao {
 
     @Override
     public List<Driver> getAll() {
-        String query = "SELECT * FROM drivers " +
-                "WHERE deleted = FALSE";
+        String query = "SELECT * FROM drivers "
+                + "WHERE deleted = FALSE";
         List<Driver> drivers = new ArrayList<>();
         try (Connection connection = ConnectionUtil.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(query)) {

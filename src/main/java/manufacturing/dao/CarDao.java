@@ -2,8 +2,6 @@ package manufacturing.dao;
 
 import java.util.List;
 import java.util.Optional;
-
-import manufacturing.lib.Dao;
 import manufacturing.model.Car;
 
 public interface CarDao {

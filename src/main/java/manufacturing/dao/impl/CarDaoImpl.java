@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import manufacturing.dao.CarDao;
 import manufacturing.db.Storage;
-import manufacturing.lib.Dao;
 import manufacturing.model.Car;
 
 public class CarDaoImpl implements CarDao {
