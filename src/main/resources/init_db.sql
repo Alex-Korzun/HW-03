@@ -2,8 +2,8 @@ CREATE SCHEMA `taxi_service` DEFAULT CHARACTER SET utf8 ;
 
 CREATE TABLE `taxi_service`.`manufacturers` (
     `manufacturer_id` BIGINT(11) NOT NULL AUTO_INCREMENT,
-    `manufacturer_name` VARCHAR(255) NOT NULL,
-    `manufacturer_country` VARCHAR(255) NOT NULL,
+    `name` VARCHAR(255) NOT NULL,
+    `country` VARCHAR(255) NOT NULL,
     `delete` TINYINT NULL,
     PRIMARY KEY (`manufacturer_id`));
 
@@ -15,14 +15,14 @@ ALTER TABLE `taxi_service`.`manufacturers`
 
 CREATE TABLE `taxi_service`.`drivers` (
     `driver_id` BIGINT(11) NOT NULL AUTO_INCREMENT,
-    `driver_name` VARCHAR(225) NOT NULL,
+    `name` VARCHAR(225) NOT NULL,
     `license_number` VARCHAR(225) NOT NULL,
     `deleted` TINYINT(1) NOT NULL DEFAULT 0,
     PRIMARY KEY (`driver_id`));
 
 CREATE TABLE `taxi_service`.`cars` (
     `car_id` BIGINT(11) NOT NULL AUTO_INCREMENT,
-    `car_model` VARCHAR(225) NOT NULL,
+    `model` VARCHAR(225) NOT NULL,
     `manufacturer_id` BIGINT(11) NOT NULL,
     PRIMARY KEY (`car_id`),
     INDEX `manufacturer_id_index` (`manufacturer_id` ASC) VISIBLE,
@@ -50,6 +50,3 @@ CREATE TABLE `taxi_service`.`cars_drivers` (
        REFERENCES `taxi_service`.`drivers` (`driver_id`)
        ON DELETE NO ACTION
        ON UPDATE NO ACTION);
-
-ALTER TABLE `taxi_service`.`cars`
-    CHANGE COLUMN `car_id` `car_id` BIGINT NOT NULL AUTO_INCREMENT ;

@@ -19,7 +19,7 @@ public class ManufacturerDaoJdbcImpl implements ManufacturerDao {
     @Override
     public Manufacturer create(Manufacturer manufacturer) {
         String query = "INSERT INTO manufacturers "
-                + "(manufacturer_name, manufacturer_country) VALUES (?, ?);";
+                + "(name, country) VALUES (?, ?);";
         try (Connection connection = ConnectionUtil.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(query,
                          Statement.RETURN_GENERATED_KEYS)) {
@@ -59,7 +59,7 @@ public class ManufacturerDaoJdbcImpl implements ManufacturerDao {
     @Override
     public Manufacturer update(Manufacturer manufacturer) {
         String query = "UPDATE manufacturers "
-                + "SET manufacturer_name = ?, manufacturer_country = ?"
+                + "SET name = ?, country = ?"
                 + "WHERE manufacturer_id = ? AND deleted = FALSE";
         try (Connection connection = ConnectionUtil.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -109,8 +109,8 @@ public class ManufacturerDaoJdbcImpl implements ManufacturerDao {
 
     private Manufacturer createManufacturer(ResultSet resultSet) {
         try {
-            String name = resultSet.getString("manufacturer_name");
-            String country = resultSet.getString("manufacturer_country");
+            String name = resultSet.getString("name");
+            String country = resultSet.getString("country");
             Long manufacturerId = resultSet.getObject("manufacturer_id", Long.class);
             Manufacturer manufacturer = new Manufacturer(name, country);
             manufacturer.setId(manufacturerId);
