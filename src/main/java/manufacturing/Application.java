@@ -23,15 +23,15 @@ public class Application {
         manufacturerService.create(secondManufacturer);
         manufacturerService.create(thirdManufacturer);
         manufacturerService.create(fourthManufacturer);
-        System.out.println(manufacturerService.getAllManufacturers().toString());
+        System.out.println(manufacturerService.getAll().toString());
 
         Manufacturer updatedManufacturer = new Manufacturer("BMW", "Germany");
         updatedManufacturer.setId(1L);
         manufacturerService.update(updatedManufacturer);
-        System.out.println(manufacturerService.getAllManufacturers().toString());
+        System.out.println(manufacturerService.getAll().toString());
 
         manufacturerService.delete(secondManufacturer.getId());
-        System.out.println(manufacturerService.getAllManufacturers().toString());
+        System.out.println(manufacturerService.getAll().toString());
 
         DriverService driverService = (DriverService) injector
                 .getInstance(DriverService.class);
