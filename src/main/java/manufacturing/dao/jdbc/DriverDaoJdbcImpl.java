@@ -78,16 +78,16 @@ public class DriverDaoJdbcImpl implements DriverDao {
         String query = "UPDATE drivers "
                 + "SET deleted = TRUE "
                 + "WHERE id = ?";
-        int deletedId;
+        int deletedRows;
         try (Connection connection = ConnectionUtil.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setLong(1, driverId);
-            deletedId = preparedStatement.executeUpdate();
+            deletedRows = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new DataProcessingException("Can't delete drivers by id "
                     + driverId, e);
         }
-        return deletedId > 0;
+        return deletedRows > 0;
     }
 
     @Override

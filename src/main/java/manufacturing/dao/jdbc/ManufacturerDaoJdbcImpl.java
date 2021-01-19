@@ -78,16 +78,16 @@ public class ManufacturerDaoJdbcImpl implements ManufacturerDao {
         String query = "UPDATE manufacturers "
                 + "SET deleted = TRUE "
                 + "WHERE id = ?";
-        int deletedId;
+        int deletedRows;
         try (Connection connection = ConnectionUtil.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setLong(1, manufacturerId);
-            deletedId = preparedStatement.executeUpdate();
+            deletedRows = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new DataProcessingException("Can't delete manufacturer by following id "
                     + manufacturerId, e);
         }
-        return deletedId > 0;
+        return deletedRows > 0;
     }
 
     @Override
