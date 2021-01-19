@@ -40,7 +40,7 @@ public class ManufacturerDaoJdbcImpl implements ManufacturerDao {
     @Override
     public Optional<Manufacturer> getById(Long manufacturerId) {
         String query = "SELECT * FROM manufacturers "
-                + "WHERE manufacturer_id = ? AND deleted = FALSE";
+                + "WHERE id = ? AND deleted = FALSE";
         Manufacturer manufacturer = null;
         try (Connection connection = ConnectionUtil.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -60,7 +60,7 @@ public class ManufacturerDaoJdbcImpl implements ManufacturerDao {
     public Manufacturer update(Manufacturer manufacturer) {
         String query = "UPDATE manufacturers "
                 + "SET name = ?, country = ?"
-                + "WHERE manufacturer_id = ? AND deleted = FALSE";
+                + "WHERE id = ? AND deleted = FALSE";
         try (Connection connection = ConnectionUtil.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, manufacturer.getName());
@@ -77,7 +77,7 @@ public class ManufacturerDaoJdbcImpl implements ManufacturerDao {
     public boolean delete(Long manufacturerId) {
         String query = "UPDATE manufacturers "
                 + "SET deleted = TRUE "
-                + "WHERE manufacturer_id = ?";
+                + "WHERE id = ?";
         int deletedId;
         try (Connection connection = ConnectionUtil.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -111,7 +111,7 @@ public class ManufacturerDaoJdbcImpl implements ManufacturerDao {
         try {
             String name = resultSet.getString("name");
             String country = resultSet.getString("country");
-            Long manufacturerId = resultSet.getObject("manufacturer_id", Long.class);
+            Long manufacturerId = resultSet.getObject("id", Long.class);
             Manufacturer manufacturer = new Manufacturer(name, country);
             manufacturer.setId(manufacturerId);
             return manufacturer;

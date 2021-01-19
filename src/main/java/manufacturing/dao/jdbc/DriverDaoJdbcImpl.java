@@ -40,7 +40,7 @@ public class DriverDaoJdbcImpl implements DriverDao {
     @Override
     public Optional<Driver> getById(Long driverId) {
         String query = "SELECT * FROM drivers "
-                + "WHERE driver_id = ? AND deleted = FALSE";
+                + "WHERE id = ? AND deleted = FALSE";
         Driver driver = null;
         try (Connection connection = ConnectionUtil.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -60,7 +60,7 @@ public class DriverDaoJdbcImpl implements DriverDao {
     public Driver update(Driver driver) {
         String query = "UPDATE drivers "
                 + "SET name = ?, license_number = ?"
-                + "WHERE driver_id = ? AND deleted = FALSE";
+                + "WHERE id = ? AND deleted = FALSE";
         try (Connection connection = ConnectionUtil.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, driver.getName());
@@ -77,7 +77,7 @@ public class DriverDaoJdbcImpl implements DriverDao {
     public boolean delete(Long driverId) {
         String query = "UPDATE drivers "
                 + "SET deleted = TRUE "
-                + "WHERE driver_id = ?";
+                + "WHERE id = ?";
         int deletedId;
         try (Connection connection = ConnectionUtil.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -111,7 +111,7 @@ public class DriverDaoJdbcImpl implements DriverDao {
         try {
             String name = resultSet.getString("name");
             String licenseNumber = resultSet.getString("license_number");
-            Long driverId = resultSet.getObject("driver_id", Long.class);
+            Long driverId = resultSet.getObject("id", Long.class);
             Driver driver = new Driver(name, licenseNumber);
             driver.setId(driverId);
             return driver;
