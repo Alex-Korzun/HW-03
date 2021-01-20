@@ -1,17 +1,15 @@
 package manufacturing.controllers.drivers;
 
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import manufacturing.lib.Injector;
 import manufacturing.model.Car;
 import manufacturing.model.Driver;
 import manufacturing.service.CarService;
 import manufacturing.service.DriverService;
-import manufacturing.service.ManufacturerService;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 public class AddDriverToCarController extends HttpServlet {
     private static final Injector injector = Injector.getInstance("manufacturing");

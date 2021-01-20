@@ -1,16 +1,14 @@
 package manufacturing.controllers.cars;
 
-import manufacturing.lib.Injector;
-import manufacturing.model.Car;
-import manufacturing.model.Manufacturer;
-import manufacturing.service.CarService;
-import manufacturing.service.ManufacturerService;
-
+import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import manufacturing.lib.Injector;
+import manufacturing.model.Car;
+import manufacturing.service.CarService;
+import manufacturing.service.ManufacturerService;
 
 public class CreateCarController extends HttpServlet {
     private static final Injector injector = Injector.getInstance("manufacturing");

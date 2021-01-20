@@ -1,14 +1,11 @@
 package manufacturing.controllers.cars;
 
-import manufacturing.lib.Injector;
-import manufacturing.model.Car;
-import manufacturing.service.CarService;
-import manufacturing.service.DriverService;
-
+import java.io.IOException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import manufacturing.lib.Injector;
+import manufacturing.service.CarService;
 
 public class DeleteCarController extends HttpServlet {
     private static final Injector injector = Injector.getInstance("manufacturing");

@@ -1,15 +1,11 @@
 package manufacturing.controllers.manufacturers;
 
-import manufacturing.lib.Injector;
-import manufacturing.model.Manufacturer;
-import manufacturing.service.ManufacturerService;
-
-import javax.servlet.ServletException;
+import java.io.IOException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.List;
+import manufacturing.lib.Injector;
+import manufacturing.service.ManufacturerService;
 
 public class DeleteManufacturerController extends HttpServlet {
     private static final Injector injector = Injector.getInstance("manufacturing");
