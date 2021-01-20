@@ -75,4 +75,13 @@
         <servlet-name>deleteManufacturer</servlet-name>
         <url-pattern>/manufacturers/delete</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>deleteDriver</servlet-name>
+        <servlet-class>manufacturing.controllers.drivers.DeleteDriverController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    <servlet-name>deleteDriver</servlet-name>
+    <url-pattern>/drivers/delete</url-pattern>
+    </servlet-mapping>
 </web-app>
