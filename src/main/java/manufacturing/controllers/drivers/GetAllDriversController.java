@@ -1,4 +1,4 @@
-package manufacturing.controllers;
+package manufacturing.controllers.drivers;
 
 import java.io.IOException;
 import java.util.List;

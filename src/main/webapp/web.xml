@@ -15,7 +15,7 @@
 
     <servlet>
         <servlet-name>allDrivers</servlet-name>
-        <servlet-class>manufacturing.controllers.GetAllDriversController</servlet-class>
+        <servlet-class>manufacturing.controllers.drivers.GetAllDriversController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>allDrivers</servlet-name>
@@ -24,7 +24,7 @@
 
     <servlet>
         <servlet-name>createDriver</servlet-name>
-        <servlet-class>manufacturing.controllers.CreateDriverController</servlet-class>
+        <servlet-class>manufacturing.controllers.drivers.CreateDriverController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>createDriver</servlet-name>
@@ -33,7 +33,7 @@
 
     <servlet>
         <servlet-name>createManufacturer</servlet-name>
-        <servlet-class>manufacturing.controllers.CreateManufacturerController</servlet-class>
+        <servlet-class>manufacturing.controllers.manufacturers.CreateManufacturerController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>createManufacturer</servlet-name>
@@ -42,7 +42,7 @@
 
     <servlet>
         <servlet-name>createCar</servlet-name>
-        <servlet-class>manufacturing.controllers.CreateCarController</servlet-class>
+        <servlet-class>manufacturing.controllers.cars.CreateCarController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>createCar</servlet-name>
@@ -51,10 +51,19 @@
 
     <servlet>
         <servlet-name>addDriverToCar</servlet-name>
-        <servlet-class>manufacturing.controllers.AddDriverToCar</servlet-class>
+        <servlet-class>manufacturing.controllers.drivers.AddDriverToCarController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>addDriverToCar</servlet-name>
         <url-pattern>/cars/drivers/add</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>allManufacturers</servlet-name>
+        <servlet-class>manufacturing.controllers.manufacturers.GetAllManufacturersController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>allManufacturers</servlet-name>
+        <url-pattern>/manufacturers/</url-pattern>
     </servlet-mapping>
 </web-app>

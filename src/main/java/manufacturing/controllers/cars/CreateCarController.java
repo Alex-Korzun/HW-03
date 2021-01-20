@@ -1,4 +1,4 @@
-package manufacturing.controllers;
+package manufacturing.controllers.cars;
 
 import manufacturing.lib.Injector;
 import manufacturing.model.Car;
