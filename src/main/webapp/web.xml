@@ -66,4 +66,13 @@
         <servlet-name>allManufacturers</servlet-name>
         <url-pattern>/manufacturers/</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>deleteManufacturer</servlet-name>
+        <servlet-class>manufacturing.controllers.manufacturers.DeleteManufacturerController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deleteManufacturer</servlet-name>
+        <url-pattern>/manufacturers/delete</url-pattern>
+    </servlet-mapping>
 </web-app>
