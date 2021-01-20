@@ -40,7 +40,7 @@ public class CarDaoJdbcImpl implements CarDao {
     }
 
     @Override
-    public Optional<Car> getById(Long carId) {
+    public Optional<Car> get(Long carId) {
         String query = "SELECT c.id, c.model, c.manufacturer_id, "
                 + "m.name, m.country "
                 + "FROM cars c "

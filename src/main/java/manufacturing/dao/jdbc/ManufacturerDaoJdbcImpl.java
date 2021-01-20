@@ -38,7 +38,7 @@ public class ManufacturerDaoJdbcImpl implements ManufacturerDao {
     }
 
     @Override
-    public Optional<Manufacturer> getById(Long manufacturerId) {
+    public Optional<Manufacturer> get(Long manufacturerId) {
         String query = "SELECT * FROM manufacturers "
                 + "WHERE id = ? AND deleted = FALSE";
         Manufacturer manufacturer = null;
@@ -91,7 +91,7 @@ public class ManufacturerDaoJdbcImpl implements ManufacturerDao {
     }
 
     @Override
-    public List<Manufacturer> getAllManufacturers() {
+    public List<Manufacturer> getAll() {
         String query = "SELECT * FROM manufacturers "
                 + "WHERE deleted = FALSE";
         List<Manufacturer> manufacturers = new ArrayList<>();

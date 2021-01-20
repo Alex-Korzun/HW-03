@@ -38,7 +38,7 @@ public class DriverDaoJdbcImpl implements DriverDao {
     }
 
     @Override
-    public Optional<Driver> getById(Long driverId) {
+    public Optional<Driver> get(Long driverId) {
         String query = "SELECT * FROM drivers "
                 + "WHERE id = ? AND deleted = FALSE";
         Driver driver = null;

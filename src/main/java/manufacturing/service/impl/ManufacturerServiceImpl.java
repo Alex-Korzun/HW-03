@@ -1,7 +1,6 @@
 package manufacturing.service.impl;
 
 import java.util.List;
-import java.util.Optional;
 import manufacturing.dao.ManufacturerDao;
 import manufacturing.lib.Inject;
 import manufacturing.lib.Service;
@@ -19,8 +18,8 @@ public class ManufacturerServiceImpl implements ManufacturerService {
     }
 
     @Override
-    public Optional<Manufacturer> getById(Long manufacturerId) {
-        return manufacturerDao.getById(manufacturerId);
+    public Manufacturer get(Long manufacturerId) {
+        return manufacturerDao.get(manufacturerId).get();
     }
 
     @Override
@@ -34,7 +33,7 @@ public class ManufacturerServiceImpl implements ManufacturerService {
     }
 
     @Override
-    public List<Manufacturer> getAllManufacturers() {
-        return manufacturerDao.getAllManufacturers();
+    public List<Manufacturer> getAll() {
+        return manufacturerDao.getAll();
     }
 }
