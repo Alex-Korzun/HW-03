@@ -48,7 +48,7 @@ public class Application {
 
         Driver updatedDriver = driverService.get(2L);
         updatedDriver.setName("James");
-        updatedDriver.setLicenceNumber("DF123OK");
+        updatedDriver.setLicenseNumber("DF123OK");
         driverService.update(updatedDriver);
         System.out.println(driverService.getAll().toString());
 
