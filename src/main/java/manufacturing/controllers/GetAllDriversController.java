@@ -12,7 +12,7 @@ import manufacturing.service.DriverService;
 
 public class GetAllDriversController extends HttpServlet {
     private static final Injector injector = Injector.getInstance("manufacturing");
-    private DriverService driverService = (DriverService) injector.getInstance(DriverService.class);
+    private final DriverService driverService = (DriverService) injector.getInstance(DriverService.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -20,5 +20,6 @@ public class GetAllDriversController extends HttpServlet {
         List<Driver> allDrivers = driverService.getAll();
         req.setAttribute("drivers", allDrivers);
         req.getRequestDispatcher("/WEB-INF/views/drivers/all.jsp").forward(req, resp);
+
     }
 }

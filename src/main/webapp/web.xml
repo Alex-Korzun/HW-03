@@ -8,19 +8,26 @@
         <servlet-name>index</servlet-name>
         <servlet-class>manufacturing.controllers.IndexController</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>index</servlet-name>
-        <url-pattern>/index</url-pattern>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 
     <servlet>
         <servlet-name>allDrivers</servlet-name>
         <servlet-class>manufacturing.controllers.GetAllDriversController</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>allDrivers</servlet-name>
         <url-pattern>/drivers/all</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>createDriver</servlet-name>
+        <servlet-class>manufacturing.controllers.CreateDriverController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>createDriver</servlet-name>
+        <url-pattern>/drivers/create</url-pattern>
     </servlet-mapping>
 </web-app>
