@@ -19,7 +19,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>allDrivers</servlet-name>
-        <url-pattern>/drivers/all</url-pattern>
+        <url-pattern>/drivers/</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -29,5 +29,14 @@
     <servlet-mapping>
         <servlet-name>createDriver</servlet-name>
         <url-pattern>/drivers/create</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>createManufacturer</servlet-name>
+        <servlet-class>manufacturing.controllers.CreateManufacturerController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>createManufacturer</servlet-name>
+        <url-pattern>/manufacturers/create</url-pattern>
     </servlet-mapping>
 </web-app>
