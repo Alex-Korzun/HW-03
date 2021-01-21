@@ -1,4 +1,4 @@
-package manufacturing.controllers.cars;
+package manufacturing.controller.car;
 
 import java.io.IOException;
 import javax.servlet.http.HttpServlet;

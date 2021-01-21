@@ -1,4 +1,4 @@
-package manufacturing.controllers.drivers;
+package manufacturing.controller.driver;
 
 import java.io.IOException;
 import javax.servlet.http.HttpServlet;
