@@ -1,7 +1,9 @@
 package manufacturing.controller;
 
+import manufacturing.exception.AuthenticationException;
 import manufacturing.lib.Injector;
 import manufacturing.model.Driver;
+import manufacturing.security.AuthenticationService;
 import manufacturing.service.DriverService;
 import manufacturing.service.ManufacturerService;
 
@@ -14,8 +16,8 @@ import java.util.Optional;
 
 public class LoginController extends HttpServlet {
     private static final Injector injector = Injector.getInstance("manufacturing");
-    private final DriverService driverService =
-            (DriverService) injector.getInstance(DriverService.class);
+    private final AuthenticationService authenticationService =
+            (AuthenticationService) injector.getInstance(AuthenticationService.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -28,6 +30,13 @@ public class LoginController extends HttpServlet {
             throws ServletException, IOException {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
-        Optional<Driver> driver = driverService.findByLogin(login);
+        try {
+            Driver driver = authenticationService.login(login, password);
+        } catch (AuthenticationException e) {
+            req.setAttribute("errorMsg", e.getMessage());
+            req.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(req, resp);
+            return;
+        }
+        resp.sendRedirect(req.getContextPath() + "/");
     }
 }
