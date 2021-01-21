@@ -44,3 +44,7 @@ CREATE TABLE `taxi_service`.`cars_drivers` (
        REFERENCES `taxi_service`.`drivers` (`id`)
        ON DELETE NO ACTION
        ON UPDATE NO ACTION);
+
+ALTER TABLE `taxi_service`.`drivers`
+    ADD COLUMN `login` VARCHAR(225) NOT NULL AFTER `license_number`,
+    ADD COLUMN `password` VARCHAR(225) NOT NULL AFTER `login`;

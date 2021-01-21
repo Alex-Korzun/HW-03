@@ -19,12 +19,15 @@ public class DriverDaoJdbcImpl implements DriverDao {
     @Override
     public Driver create(Driver driver) {
         String query = "INSERT INTO drivers "
-                + "(name, license_number) VALUES (?, ?)";
+                + "(name, license_number, login, password) "
+                + "VALUES (?, ?, ?, ?)";
         try (Connection connection = ConnectionUtil.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(query,
                         Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, driver.getName());
             preparedStatement.setString(2, driver.getLicenseNumber());
+            preparedStatement.setString(3, driver.getLogin());
+            preparedStatement.setString(4, driver.getPassword());
             preparedStatement.executeUpdate();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
             if (resultSet.next()) {
@@ -59,13 +62,16 @@ public class DriverDaoJdbcImpl implements DriverDao {
     @Override
     public Driver update(Driver driver) {
         String query = "UPDATE drivers "
-                + "SET name = ?, license_number = ?"
+                + "SET name = ?, license_number = ?, "
+                + "login = ?, password = ? "
                 + "WHERE id = ? AND deleted = FALSE";
         try (Connection connection = ConnectionUtil.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, driver.getName());
             preparedStatement.setString(2, driver.getLicenseNumber());
-            preparedStatement.setLong(3, driver.getId());
+            preparedStatement.setString(3, driver.getLogin());
+            preparedStatement.setString(4, driver.getPassword());
+            preparedStatement.setLong(5, driver.getId());
             preparedStatement.executeUpdate();
             return driver;
         } catch (SQLException e) {
@@ -111,12 +117,32 @@ public class DriverDaoJdbcImpl implements DriverDao {
         try {
             String name = resultSet.getString("name");
             String licenseNumber = resultSet.getString("license_number");
+            String login = resultSet.getString("login");
+            String password = resultSet.getString("password");
             Long driverId = resultSet.getObject("id", Long.class);
-            Driver driver = new Driver(name, licenseNumber);
+            Driver driver = new Driver(name, licenseNumber, login, password);
             driver.setId(driverId);
             return driver;
         } catch (SQLException e) {
             throw new DataProcessingException("Can't parse driver from result set ", e);
+        }
+    }
+
+    @Override
+    public Optional<Driver> findByLogin(String login) {
+        String query = "SELECT * FROM drivers " +
+                "WHERE login = ? AND deleted = FALSE";
+        Driver driver = null;
+        try (Connection connection = ConnectionUtil.getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, login);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                driver = createDriver(resultSet);
+            }
+            return Optional.ofNullable(driver);
+        } catch (SQLException e) {
+            throw new DataProcessingException("Can't find Driver by this login", e);
         }
     }
 }
