@@ -5,13 +5,13 @@
 </head>
 <body>
 <h1>Welcome!</h1>
-<a href="${pageContext.request.contextPath}/driver/create">Create New Driver</a><br>
+<a href="${pageContext.request.contextPath}/drivers/create">Create New Driver</a><br>
 <a href="${pageContext.request.contextPath}/drivers/">Display All Drivers</a><br>
-<a href="${pageContext.request.contextPath}/manufacturer/create">Add New Manufacturer</a><br>
-<a href="${pageContext.request.contextPath}/manufacturer/">Display All Manufacturers</a><br>
-<a href="${pageContext.request.contextPath}/car/create">Add New Car</a><br>
+<a href="${pageContext.request.contextPath}/manufacturers/create">Add New Manufacturer</a><br>
+<a href="${pageContext.request.contextPath}/manufacturers/">Display All Manufacturers</a><br>
+<a href="${pageContext.request.contextPath}/cars/create">Add New Car</a><br>
 <a href="${pageContext.request.contextPath}/cars/">Display All Cars</a><br>
-<a href="${pageContext.request.contextPath}/car/drivers/add">Add Driver To Car</a><br>
-<a href="${pageContext.request.contextPath}/car/get">Show All My Cars</a><br>
+<a href="${pageContext.request.contextPath}/cars/drivers/add">Add Driver To Car</a><br>
+<a href="${pageContext.request.contextPath}/cars/get">Show All My Cars</a><br>
 </body>
 </html>

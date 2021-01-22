@@ -17,7 +17,7 @@ public class CreateDriverController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/views/driver/create.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/views/drivers/create.jsp").forward(req, resp);
     }
 
     @Override
@@ -37,7 +37,7 @@ public class CreateDriverController extends HttpServlet {
         } else {
             req.setAttribute("errorMsg", "Passwords should be equals");
             req.setAttribute("login", "login");
-            req.getRequestDispatcher("/WEB-INF/views/driver/create.jsp").forward(req, resp);
+            req.getRequestDispatcher("/WEB-INF/views/drivers/create.jsp").forward(req, resp);
         }
     }
 }

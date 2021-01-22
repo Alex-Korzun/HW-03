@@ -6,7 +6,7 @@
 <body>
 <h1>Please provide information about your Driver</h1>
 <h4 style="color:red">${errorMsg}</h4>
-<form method="post" action="${pageContext.request.contextPath}/driver/create">
+<form method="post" action="${pageContext.request.contextPath}/drivers/create">
     Please enter Name of the Driver: <input type="text" name="name" required><br>
     Please enter driving License Number of the Driver: <input type="number" name="licenseNumber" required><br>
     Please enter your Login: <input type="text" name="login" required><br>
