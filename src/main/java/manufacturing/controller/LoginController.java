@@ -1,19 +1,15 @@
 package manufacturing.controller;
 
-import manufacturing.exception.AuthenticationException;
-import manufacturing.lib.Injector;
-import manufacturing.model.Driver;
-import manufacturing.security.AuthenticationService;
-import manufacturing.service.DriverService;
-import manufacturing.service.ManufacturerService;
-
+import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.util.Optional;
+import manufacturing.exception.AuthenticationException;
+import manufacturing.lib.Injector;
+import manufacturing.model.Driver;
+import manufacturing.security.AuthenticationService;
 
 public class LoginController extends HttpServlet {
     private static final Injector injector = Injector.getInstance("manufacturing");

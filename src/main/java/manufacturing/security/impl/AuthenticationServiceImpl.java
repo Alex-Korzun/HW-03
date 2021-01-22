@@ -7,8 +7,6 @@ import manufacturing.model.Driver;
 import manufacturing.security.AuthenticationService;
 import manufacturing.service.DriverService;
 
-import java.util.Optional;
-
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
     @Inject

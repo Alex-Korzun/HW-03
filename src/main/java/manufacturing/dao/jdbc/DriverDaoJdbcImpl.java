@@ -132,8 +132,8 @@ public class DriverDaoJdbcImpl implements DriverDao {
 
     @Override
     public Optional<Driver> findByLogin(String login) {
-        String query = "SELECT * FROM drivers " +
-                "WHERE login = ? AND deleted = FALSE";
+        String query = "SELECT * FROM drivers "
+                + "WHERE login = ? AND deleted = FALSE";
         Driver driver = null;
         try (Connection connection = ConnectionUtil.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(query)) {

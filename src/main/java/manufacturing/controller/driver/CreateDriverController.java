@@ -5,8 +5,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.mysql.cj.protocol.x.XMessage;
 import manufacturing.lib.Injector;
 import manufacturing.model.Driver;
 import manufacturing.service.DriverService;
