@@ -120,8 +120,10 @@ public class DriverDaoJdbcImpl implements DriverDao {
             String login = resultSet.getString("login");
             String password = resultSet.getString("password");
             Long driverId = resultSet.getObject("id", Long.class);
-            Driver driver = new Driver(name, licenseNumber, login, password);
+            Driver driver = new Driver(name, licenseNumber);
             driver.setId(driverId);
+            driver.setLogin(login);
+            driver.setPassword(password);
             return driver;
         } catch (SQLException e) {
             throw new DataProcessingException("Can't parse driver from result set ", e);

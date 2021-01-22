@@ -6,7 +6,7 @@
 <body>
 <h1>Login Page</h1>
 <h4 style="color:red">${errorMsg}</h4>
-<form method="post" action="${pageContext.request.contextPath}/cars/create">
+<form method="post" action="${pageContext.request.contextPath}/login">
     Please enter your login: <input type="text" name="login">
     Please enter your password: <input type="password" name="password">
     <button type="submit">Login</button>
