@@ -154,7 +154,7 @@ public class CarDaoJdbcImpl implements CarDao {
     }
 
     private List<Driver> getAllDriversByCarId(Long carId) {
-        String query = "SELECT cd.driver_id, d.name, d.license_number "
+        String query = "SELECT cd.driver_id, d.name, d.license_number, d.login "
                 + "FROM cars_drivers cd "
                 + "INNER JOIN drivers d "
                 + "ON d.id = cd.driver_id "
@@ -179,8 +179,10 @@ public class CarDaoJdbcImpl implements CarDao {
             Long driverId = resultSet.getObject("driver_id", Long.class);
             String name = resultSet.getString("name");
             String licenseNumber = resultSet.getString("license_number");
+            String login = resultSet.getString("login");
             Driver driver = new Driver(name, licenseNumber);
             driver.setId(driverId);
+            driver.setLogin(login);
             return driver;
         } catch (Exception e) {
             throw new DataProcessingException("Can't parse driver from result set", e);

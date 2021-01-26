@@ -1,4 +1,4 @@
-package manufacturing.controllers;
+package manufacturing.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

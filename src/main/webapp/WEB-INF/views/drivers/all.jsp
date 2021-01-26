@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>All drivers</title>
+    <title>All Drivers</title>
 </head>
 <body>
 <h1>All Drivers Page</h1>
@@ -12,6 +12,7 @@
         <th>ID</th>
         <th>Name</th>
         <th>License Number</th>
+        <th>Login</th>
     </tr>
     <c:forEach var="driver" items="${drivers}">
         <tr>
@@ -23,6 +24,9 @@
             </td>
             <td>
                 <c:out value="${driver.licenseNumber}"/>
+            </td>
+            <td>
+                <c:out value="${driver.login}"/>
             </td>
             <td>
                 <a href="${pageContext.request.contextPath}/drivers/delete?id=${driver.id}">Delete</a>

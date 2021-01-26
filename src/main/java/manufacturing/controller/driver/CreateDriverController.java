@@ -1,4 +1,4 @@
-package manufacturing.controllers.drivers;
+package manufacturing.controller.driver;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -22,11 +22,22 @@ public class CreateDriverController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-            throws IOException {
+            throws IOException, ServletException {
         String name = req.getParameter("name");
         String licenseNumber = req.getParameter("licenseNumber");
+        String login = req.getParameter("login");
+        String password = req.getParameter("password");
+        String submitPassword = req.getParameter("submitPassword");
         Driver driver = new Driver(name, licenseNumber);
-        driverService.create(driver);
-        resp.sendRedirect(req.getContextPath() + "/");
+        driver.setLogin(login);
+        if (password.equals(submitPassword)) {
+            driver.setPassword(password);
+            driverService.create(driver);
+            resp.sendRedirect(req.getContextPath() + "/");
+        } else {
+            req.setAttribute("errorMsg", "Passwords should be equals");
+            req.setAttribute("login", "login");
+            req.getRequestDispatcher("/WEB-INF/views/drivers/create.jsp").forward(req, resp);
+        }
     }
 }
